@@ -103,7 +103,7 @@ displaycolordepth 8" | tee -a ~/.basilisk_ii_prefs
 cd
 unzip chromebook-basilisk2-sdl2/HD200MB-POP.zip -d /root
 
-echo -e "${RED}>>> Done. Starting BasiliskII...${NC}"
+echo -e "${RED}>>> Done. Reboot and then start BasiliskII.${NC}"
 sleep 5
 
-BasiliskII
+#reboot
