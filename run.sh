@@ -7,19 +7,15 @@ read -p $'\e[31m>>> Perform system update and upgrade first? (Reboot required) \
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	apt update && sudo apt upgrade -y
+	apt update && apt upgrade -y
+	apt install firmware-linux wicd-cli wicd-curses -y
+	apt install xorg lightdm i3-wm i3status suckless-tools xterm feh -y
+	apt install firmware-intel-sound alsa-utils pulseaudio -y
+	apt install zip unzip rar unrar wget curl sudo htop -y
+	apt install dosfstools ntfs-3g exfat-fuse exfat-utils imagemagick -y
+	apt install fortune cowsay lolcat toilet figlet tty-clock -y
 	reboot
 fi
-
-echo -e "${RED}>>> No update. Installing additional packages in 5 seconds.${NC}"
-sleep 5
-
-apt install firmware-linux wicd-cli wicd-curses -y 
-apt install xorg lightdm i3-wm i3status suckless-tools xterm feh -y
-apt install firmware-intel-sound alsa-utils pulseaudio -y
-apt install zip unzip rar unrar wget curl sudo htop -y
-apt install dosfstools ntfs-3g exfat-fuse exfat-utils imagemagick -y
-apt install fortune cowsay lolcat toilet figlet tty-clock -y
 
 echo -e "${RED}>>> Configuring the additional packages in 5 seconds.${NC}"
 sleep 5
