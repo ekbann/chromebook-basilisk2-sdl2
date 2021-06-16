@@ -100,8 +100,8 @@ make install
 
 echo -e "${RED}>>> Setting up some Basilisk II preferences.${NC}"
 
-echo "rom /root/Quadra800.ROM
-disk /root/HD200MB
+echo "rom Quadra800.ROM
+disk HD200MB
 ramsize 142606336
 frameskip 0
 modelid 14
