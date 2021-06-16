@@ -3,17 +3,26 @@
 RED='\033[0;31m'	# Red Color
 NC='\033[0m'		# No Color
 
-read -p $'\e[31m>>> Perform system update and upgrade first? (Reboot required) \e[0m' -n 1 -r
+read -p $'\e[31m>>> Perform system update/upgrade with packages installation first? (Reboot required) \e[0m' -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	apt update && apt upgrade -y
+	
+	# For Chromebook minimal install
 	apt install firmware-linux wicd-cli wicd-curses -y
 	apt install xorg lightdm i3-wm i3status suckless-tools xterm feh -y
 	apt install firmware-intel-sound alsa-utils pulseaudio -y
 	apt install zip unzip rar unrar wget curl sudo htop -y
 	apt install dosfstools ntfs-3g exfat-fuse exfat-utils imagemagick -y
 	apt install fortune cowsay lolcat toilet figlet tty-clock -y
+	
+	# For SDL2 compilation
+	apt install build-essential xorg-dev libudev-dev libts-dev libgl1-mesa-dev libglu1-mesa-dev -y
+	apt install libasound2-dev libpulse-dev libopenal-dev libogg-dev libvorbis-dev libaudiofile-dev -y
+	apt install libpng12-dev libfreetype6-dev libusb-dev libdbus-1-dev zlib1g-dev libdirectfb-dev -y
+	apt install automake libxkbcommon-dev -y
+	
 	reboot
 fi
 
@@ -28,21 +37,24 @@ service wicd start
 service networking restart
 dpkg-reconfigure tzdata
 
+# Resize the xterm font to a larger size to be more readable
 echo "xterm*faceName: Monospace
 xterm*faceSize: 12" | tee -a ~/.Xresources
 
+# Set keyboard to Brazilian ABNT2
 echo "XKBMODEL=\"abnt2\"
 XKBLAYOUT=\"br\"
 XKBVARIANT=\"\"
 XKBOPTIONS=\"\"" | tee /etc/default/keyboard
 
+# Disable the power button to avoid inadvertant shutdowns
 echo "HandlePowerKey=ignore" | tee -a /etc/systemd/logind.conf
 service systemd-logind restart
 
 echo -e "${RED}>>> Installing development packages in 5 seconds.${NC}"
 sleep 5
 
-sudo apt install automake build-essential -y
+#sudo apt install automake build-essential -y
 
 echo -e "${RED}>>> Downloading SDL2 version 2.0.14 in 5 seconds.${NC}"
 sleep 5
@@ -64,6 +76,9 @@ make -j3
 
 sudo make install
 
+# Update the library links/cache
+ldconfig
+
 echo -e "${RED}>>> Downloading Basilisk II in 5 seconds.${NC}"
 sleep 5
 
@@ -82,7 +97,7 @@ NO_CONFIGURE=1 ./autogen.sh &&
 make -j3
 
 strip BasiliskII
-sudo make install
+make install
 
 echo -e "${RED}>>> Setting up some Basilisk II preferences.${NC}"
 
