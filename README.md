@@ -28,6 +28,8 @@ Open a terminal windows with ALT+ENTER and execute the commands below:
 
 This time around, answer NO to the update/upgrade step. Go grab another cup of coffee and wait for the script to end. Reboot so that the additional configuration takes effect.
 
+    reboot
+
 Login as root one last time, open a xterm, and run Basilisk II. Note that Pulse audio does not run as root so there will be no sound. Once we have a working BasiliskII running, move all the required files over to the normal user you created during the Debian netinst installation (e.g. sjobs):
 
     mv /root/HD200MB /home/sjobs/
@@ -35,7 +37,10 @@ Login as root one last time, open a xterm, and run Basilisk II. Note that Pulse 
     mv /root/.basilisk_ii_* /home/sjobs/
     cp /root/.Xresources /home/sjobs
     chown sjobs:sjobs /home/sjobs/*
+    chown sjobs:sjobs /home/sjobs/.basilisk_ii_*
     chown sjobs:sjobs /home/sjobs/.Xresources
+
+Logout from root (SHIFT+ALT+E) and log back in as your normal user. Go thru the normal i3 config creation and modifier key assignment (ALT). Now run BasiliskII directly without needing to open an xterm: press ALT+D to launch "dmenu" and type "BasiliskII" followed by ENTER.
 
 Enjoy!
     
