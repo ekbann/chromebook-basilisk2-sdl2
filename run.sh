@@ -9,15 +9,21 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	apt update && apt upgrade -y
 	
-	# For Chromebook minimal install
+	# Wireless connectivity and miscellaneous firmware
 	apt install firmware-linux wicd-cli wicd-curses -y
-	apt install xorg lightdm i3-wm i3status suckless-tools xterm feh -y
+
+	# Sound
 	apt install firmware-intel-sound alsa-utils pulseaudio -y
+
+	# X Windows with i3 window manager
+	apt install xorg lightdm i3-wm i3status suckless-tools xterm -y
+
+	# Minimal tools and gadgets
 	apt install zip unzip rar unrar wget curl sudo htop -y
 	apt install dosfstools ntfs-3g exfat-fuse exfat-utils imagemagick -y
-	apt install fortune cowsay lolcat toilet figlet tty-clock -y
+	apt install feh fortune cowsay lolcat toilet figlet tty-clock -y
 	
-	# For SDL2 compilation
+	# For SDL2 compilation, development packages
 	apt install build-essential xorg-dev libudev-dev libts-dev libgl1-mesa-dev libglu1-mesa-dev -y
 	apt install libasound2-dev libpulse-dev libopenal-dev libogg-dev libvorbis-dev libaudiofile-dev -y
 	apt install libpng12-dev libfreetype6-dev libusb-dev libdbus-1-dev zlib1g-dev libdirectfb-dev -y
@@ -51,15 +57,8 @@ XKBOPTIONS=\"\"" | tee /etc/default/keyboard
 echo "HandlePowerKey=ignore" | tee -a /etc/systemd/logind.conf
 service systemd-logind restart
 
-echo -e "${RED}>>> Installing development packages in 5 seconds.${NC}"
-sleep 5
-
-#sudo apt install automake build-essential -y
-
 echo -e "${RED}>>> Downloading SDL2 version 2.0.14 in 5 seconds.${NC}"
 sleep 5
-
-# Original HOW-TO used SDL2 version 2.0.7
 
 mkdir -p ~/src/sdl2 &&
 wget https://www.libsdl.org/release/SDL2-2.0.14.tar.gz -O - | tar -xz -C ~/src/sdl2
@@ -74,7 +73,7 @@ cd ~/src/sdl2/SDL2-2.0.14 &&
 ./configure &&
 make -j3
 
-sudo make install
+make install
 
 # Update the library links/cache
 ldconfig
