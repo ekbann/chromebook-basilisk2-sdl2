@@ -110,8 +110,9 @@ fpu true
 screen win/640/480
 displaycolordepth 8" | tee -a ~/.basilisk_ii_prefs
 
-cd
+cd ~
 unzip chromebook-basilisk2-sdl2/HD200MB-POP.zip -d /root
+cp chromebook-basilisk2-sdl2/Quadra800.ROM .
 
 echo -e "${RED}>>> Done. Reboot and then start BasiliskII.${NC}"
 sleep 5
