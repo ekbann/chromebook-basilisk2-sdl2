@@ -2,7 +2,7 @@
 
 Minimal Basilisk II installation using Debian netinst non-free firmware version on a Chromebook with X.org.
 
-This script will automatically download and compile all the necessary source code to have a fully functional Basilisk II emulator running with SDL2 and without X Windows for maximum performance. In order to have an extremely light Linux system the Raspberry Pi OS Lite was chosen as the base for this project. As of this writing the following versions were used:
+This script will automatically download and compile all the necessary source code to have a fully functional Basilisk II emulator running with SDL2 in X Windows. In order to have an extremely light Linux system the Debian 'netinst' version was chosen as the base for this project. As of this writing the following versions were used:
 
     Debian 10 "Buster" netinst non-free firmware version (firmware-10.9.0-amd64-netinst)
     SDL2 version 2.0.14
@@ -10,19 +10,34 @@ This script will automatically download and compile all the necessary source cod
 
 A 200MB disk image is also included here with pre-installed Mac OS 7.6.1 and Prince of Persia 1 for a quick demonstration of sound and graphics at 640x480 and 256 colors.
 
-To install, boot into your freshly created Raspberry Pi OS Lite and login with the default user "pi" (password "raspberry"). Then run the following commands:
+To install, boot into your freshly created Debian 'netinst' and login with the root user. Then run the following commands:
 
     sudo apt install git
     git clone https://github.com/ekbann/chromebook-basilisk2-sdl2
     cd chromebook-basilisk2-sdl2
     bash run.sh
 
-When the script ends, it will run Basilisk II automatically but you can also manually start with the commands below. Enjoy!
+In the first run, answer YES to update/upgrade the system, and install all the packages needed for our minimal installation. Go grab a cup of coffee and when its done, it will automatically reboot and greet you with a graphical login screen.
 
-NOTE: Whenever you reboot your Pi, you need to reload the snd-pcm-oss module before running Basilisk II for sound output. snd-pcm-oss is a kernel module from ALSA's OssEmulation which emulates the old OSS audio devices /dev/dsp and /dev/audio.
+Login as root once again. The i3 windows manager will ask to create a config file, answer YES. Choose the ALT key as your i3 modifier key.
 
-    sudo modprobe snd-pcm-oss
-    BasiliskII
+Open a terminal windows with ALT+ENTER and execute the commands below:
+
+    cd chromebook-basilisk2-sdl2
+    bash run.sh
+
+This time around, answer NO to the update/upgrade step. Go grab another cup of coffee and wait for the script to end. Reboot so that the additional configuration takes effect.
+
+Login as root one last time, open a xterm, and run Basilisk II. Note that Pulse audio does not run as root so there will be no sound. Once we have a working BasiliskII running, move all the required files over to the normal user you created during the Debian netinst installation (e.g. sjobs):
+
+    mv /root/HD200MB /home/sjobs/
+    mv /root/Quadra800.ROM /home/sjobs/
+    mv /root/.basilisk_ii_* /home/sjobs/
+    cp /root/.Xresources /home/sjobs
+    chown sjobs:sjobs /home/sjobs/*
+    chown sjobs:sjobs /home/sjobs/.Xresources
+
+Enjoy!
     
 You can change the screen resolution by editing the .basilisk_ii_prefs and change the "screen" parameter. For some serious work, you can try the following:
 
