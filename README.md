@@ -48,9 +48,9 @@ Logout from root (SHIFT+ALT+E) and log back in as your normal user. Go thru the 
 
 Enjoy!
     
-You can change the screen resolution by editing the .basilisk_ii_prefs and change the "screen" parameter. For some serious work, you can try the following:
+You can change the screen resolution by editing the .basilisk_ii_prefs and change the "screen" parameter. For some serious work, you can try the following for maximum resolution:
 
-    screen win/1024/768
+    screen dga/0/0
     displaycolordepth 16
 
 Then go to Mac OS 7.6.1 Control Panel and under Monitors, select "Thousands" of colors.
