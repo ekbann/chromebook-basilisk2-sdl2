@@ -46,6 +46,8 @@ Login as root one last time, open a xterm, and run Basilisk II. Note that Pulse 
 
 Logout from root (SHIFT+ALT+E) and log back in as your normal user. Go thru the normal i3 config creation and modifier key assignment (ALT). Now run BasiliskII directly without needing to open an xterm: press ALT+D to launch "dmenu" and type "BasiliskII" followed by ENTER.
 
+For your web-browsing and e-mail needs run "google-chrome" on your non-root account outside of BasiliskII (unfortunately). In exchange, you get 100% surfing experience with amazing speed.
+
 Enjoy!
     
 You can change the screen resolution by editing the .basilisk_ii_prefs and change the "screen" parameter. For some serious work, you can try the following for fullscreen maximum resolution and colors:
