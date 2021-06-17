@@ -1,6 +1,8 @@
 # chromebook-basilisk2-sdl2
 
-Minimal Basilisk II installation using Debian netinst non-free firmware version on a Chromebook with X.org.
+Minimal Basilisk II installation using Debian netinst non-free firmware version on an Acer Chromebook 11 N7 (C731) with X.org.
+
+Some preparation is required to install Linux. See here: http://ekbann.blogspot.com/2020/03/acer-chromebook-11-n7-c731-surgery.html
 
 This script will automatically download and compile all the necessary source code to have a fully functional Basilisk II emulator running with SDL2 in X Windows. In order to have an extremely light Linux system the Debian 'netinst' version was chosen as the base for this project. As of this writing the following versions were used:
 
@@ -10,7 +12,9 @@ This script will automatically download and compile all the necessary source cod
 
 A 200MB disk image is also included here with pre-installed Mac OS 7.6.1 and Prince of Persia 1 for a quick demonstration of sound and graphics at 640x480 and 256 colors.
 
-To install, boot into your freshly created Debian 'netinst' and login with the root user. Then run the following commands:
+Before we can run the script, a few words on getting our Chromebook up and running with Linux. The easiest way to install the system is to use an ethernet adapter. Since the Chromebook does not have a built-in ethernet port, I used Apple's USB to Ethernet dongle model A1277. Plug that in to your Chromebook and connect it to your router. Boot the Debian netinst USB installer. Install only "SSH Server" and "Standard System Utilities".
+
+Once Linux is installed, boot into your freshly created Debian 'netinst' and login with the root user. Then run the following commands:
 
     sudo apt install git
     git clone https://github.com/ekbann/chromebook-basilisk2-sdl2
