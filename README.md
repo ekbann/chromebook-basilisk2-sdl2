@@ -12,7 +12,7 @@ This script will automatically download and compile all the necessary source cod
 
 A 200MB disk image is also included here with pre-installed Mac OS 7.6.1 and Prince of Persia 1 for a quick demonstration of sound and graphics at 640x480 and 256 colors.
 
-Before we can run the script, a few words on getting our Chromebook up and running with Linux. The easiest way to install the system is to use an ethernet adapter. Since the Chromebook does not have a built-in ethernet port, I used Apple's USB to Ethernet dongle model A1277. Plug that in to your Chromebook and connect it to your router. Boot the Debian netinst USB installer. Install only "SSH Server" and "Standard System Utilities".
+Before we can run the script, a few words on getting our Chromebook up and running with Linux. The easiest way to install the system is to use an ethernet adapter to access the Internet for the additional packages. Since the Chromebook does not have a built-in ethernet port, I used Apple's USB to Ethernet dongle model A1277. Plug that in to your Chromebook and connect it to your router. Boot the Debian netinst USB installer. Install only "SSH Server" and "Standard System Utilities".
 
 Once Linux is installed, boot into your freshly created Debian 'netinst' and login with the root user. Then run the following commands:
 
