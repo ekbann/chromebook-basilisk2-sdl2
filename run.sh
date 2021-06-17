@@ -23,6 +23,9 @@ then
 	apt install dosfstools ntfs-3g exfat-fuse exfat-utils imagemagick -y
 	apt install feh fortune cowsay lolcat toilet figlet tty-clock -y
 	
+	# Required packages for Google Chrome web browser
+	apt install fonts-liberation libnspr4 libnss3 xdg-utils -y
+	
 	# For SDL2 compilation, development packages
 	apt install build-essential xorg-dev libudev-dev libts-dev libgl1-mesa-dev libglu1-mesa-dev -y
 	apt install libasound2-dev libpulse-dev libopenal-dev libogg-dev libvorbis-dev libaudiofile-dev -y
@@ -56,6 +59,12 @@ XKBOPTIONS=\"\"" | tee /etc/default/keyboard
 # Disable the power button to avoid inadvertant shutdowns
 echo "HandlePowerKey=ignore" | tee -a /etc/systemd/logind.conf
 service systemd-logind restart
+
+echo -e "${RED}>>> Installing the latest version of Google Chrome in 5 seconds.${NC}"
+sleep 5
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+dpkg -i google-chrome-stable_current_amd64.deb
 
 echo -e "${RED}>>> Downloading SDL2 version 2.0.14 in 5 seconds.${NC}"
 sleep 5
