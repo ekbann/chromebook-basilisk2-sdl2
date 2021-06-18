@@ -50,6 +50,16 @@ dpkg-reconfigure tzdata
 echo "xterm*faceName: Monospace
 xterm*faceSize: 12" | tee -a ~/.Xresources
 
+# Add volume indicator in the i3 status bar
+sed -i '/^order += \"tz/a order += \"volume master\"' /etc/i3status.conf
+echo "volume master {
+    format = \"V: %volume\"
+    format_muted = \"V: X\"
+    device = \"default\"
+    mixer = \"Master\"
+    mixer_idx = 0
+}" | tee -a /etc/i3status.conf
+
 # Set keyboard to Brazilian ABNT2
 echo "XKBMODEL=\"abnt2\"
 XKBLAYOUT=\"br\"
