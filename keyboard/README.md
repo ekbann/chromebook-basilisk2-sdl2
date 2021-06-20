@@ -20,11 +20,19 @@ Originally <LWIN> was mapped to [Super_L]. Clear the xkb settings cache:
 
 Reboot your laptop.
 
-Edit /etc/default/keyboard:
+Edit **/etc/default/keyboard** to set the Brazilian ABNT2 layout:
 
     XKBMODEL="pc105"
     XKBLAYOUT="br"
     XKBVARIANT="nodeadkeys"
+    XKBOPTIONS=""
+    BACKSPACE=""
+
+If you have the US keyboard layout, use this instead:
+
+    XKBMODEL="pc105"
+    XKBLAYOUT="us"
+    XKBVARIANT=""
     XKBOPTIONS=""
     BACKSPACE=""
 
@@ -36,4 +44,5 @@ The Chromebook's keys will then work as follows:
          R_ALT = Mac Command key
         R_CTRL = Mac Option key
         
-Mount the included "brazilian_layout" disk image and move the "Brazilian ABNT2" file over to your System Folder. You will be asked to install the file in System, allow installation. The Brazilian keyboard layout will be available as a choice in the Keyboard control panel.
+Mount the included "brazilian_layout" disk image and move the "Brazilian ABNT2" file over to your System Folder. You will be asked to install the file in System, allow installation. The Brazilian keyboard layout will be available as a choice in the Keyboard control panel. If you have the US keyboard layout, you can omit the installation of the "Brazilian ABNT2" layout inside Mac OS 7.6.1.
+
