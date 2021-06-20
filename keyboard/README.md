@@ -22,11 +22,11 @@ Reboot your laptop.
 
 Edit /etc/default/keyboard:
 
-XKBMODEL="pc105"
-XKBLAYOUT="br"
-XKBVARIANT="nodeadkeys"
-XKBOPTIONS=""
-BACKSPACE=""
+    XKBMODEL="pc105"
+    XKBLAYOUT="br"
+    XKBVARIANT="nodeadkeys"
+    XKBOPTIONS=""
+    BACKSPACE=""
 
 The Chromebook's keys will then work as follows:
 
