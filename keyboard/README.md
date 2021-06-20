@@ -6,7 +6,7 @@ The keycode function can also be enabled by editing the preferences file manuall
     keycodes true
     keycodefile BasiliskII_keycodes
 
-I solved the Search=CapsLock problem in X windows for the "pc105" keyboard model:
+I solved the **Search=CapsLock** problem in X windows for the "pc105" keyboard model:
 
     nano /usr/share/X11/xkb/symbols/pc
 
