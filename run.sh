@@ -61,14 +61,17 @@ echo "volume master {
 }" | tee -a /etc/i3status.conf
 
 # Set keyboard to Brazilian ABNT2
-echo "XKBMODEL=\"abnt2\"
+echo "XKBMODEL=\"pc105\"
 XKBLAYOUT=\"br\"
-XKBVARIANT=\"\"
+XKBVARIANT=\"nodeadkeys\"
 XKBOPTIONS=\"\"" | tee /etc/default/keyboard
 
 # Disable the power button to avoid inadvertant shutdowns
 echo "HandlePowerKey=ignore" | tee -a /etc/systemd/logind.conf
 service systemd-logind restart
+
+# Remap "pc105" keyboard layout SEARCH key with CAPS_LOCK key for X windows
+sed -i '/key <LWIN>/c\    key <LWIN> {\t[ Caps_Lock\t\t]\t};' /usr/share/X11/xkb/symbols/pc
 
 echo -e "${RED}>>> Installing the latest version of Google Chrome in 5 seconds.${NC}"
 sleep 5
@@ -127,13 +130,17 @@ modelid 14
 cpu 4
 fpu true
 screen win/640/480
-displaycolordepth 8" | tee -a ~/.basilisk_ii_prefs
+displaycolordepth 8
+keycodes true
+keycodefile BasiliskII_keycodes" | tee -a ~/.basilisk_ii_prefs
 
 cd ~
 unzip chromebook-basilisk2-sdl2/HD200MB-POP.zip -d /root
 cp chromebook-basilisk2-sdl2/Quadra800.ROM .
+cp chromebook-basilisk2-sdl2/keyboard/BasiliskII_keycodes .
 
 echo -e "${RED}>>> Done. Reboot and then start BasiliskII.${NC}"
+echo -e "${RED}>>> (Install the Brazilian ABNT2 keyboard layout if needed)${NC}"
 sleep 5
 
 #reboot
