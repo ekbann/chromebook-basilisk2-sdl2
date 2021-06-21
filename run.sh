@@ -61,6 +61,7 @@ echo "volume master {
 }" | tee -a /etc/i3status.conf
 
 # Set keyboard to Brazilian ABNT2
+# If you have the US model, use: XKBLAYOUT="us" and XKBVARIANT=""
 echo "XKBMODEL=\"pc105\"
 XKBLAYOUT=\"br\"
 XKBVARIANT=\"nodeadkeys\"
