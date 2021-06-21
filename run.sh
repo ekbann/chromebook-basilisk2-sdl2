@@ -74,6 +74,9 @@ service systemd-logind restart
 # Remap "pc105" keyboard layout SEARCH key with CAPS_LOCK key for X windows
 sed -i '/key <LWIN>/c\    key <LWIN> {\t[ Caps_Lock\t\t]\t};' /usr/share/X11/xkb/symbols/pc
 
+# Clear the xkb settings cache
+rm -rf /var/lib/xkb/*
+
 echo -e "${RED}>>> Installing the latest version of Google Chrome in 5 seconds.${NC}"
 sleep 5
 
