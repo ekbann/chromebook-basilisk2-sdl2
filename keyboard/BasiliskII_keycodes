@@ -566,21 +566,13 @@ sdl x11
 88	76	# KP Enter
 225	56	# Shift Left
 
-#224	58	# Ctrl Left (--> Command)
 224	54	# L_CTRL = Control
-
 # 227		# Logo Left
-
 226	55	# Alt Left (--> Command)
-
 44	49	# Space
-
 230	55	# Alt Right (--> Command)
-
 # 231		# Logo Right
-
 101	50	# Menu (--> International)
-
 #228	54	# Ctrl Right
 228	58	# R_CTRL = Option
 
