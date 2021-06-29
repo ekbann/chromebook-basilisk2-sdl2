@@ -571,18 +571,18 @@ sdl x11
 
 # 227		# Logo Left
 
-#226	55	# Alt Left (--> Option)
+226	55	# Alt Left (--> Command)
 
 44	49	# Space
 
-230	58	# Alt Right (--> Command)
+230	55	# Alt Right (--> Command)
 
 # 231		# Logo Right
 
 101	50	# Menu (--> International)
 
 #228	54	# Ctrl Right
-228	55	# R_CTRL = Option
+228	58	# R_CTRL = Option
 
 229	56	# Shift Right
 98	82	# KP 0
