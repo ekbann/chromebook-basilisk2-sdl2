@@ -136,7 +136,8 @@ fpu true
 screen win/640/480
 displaycolordepth 8
 keycodes true
-keycodefile BasiliskII_keycodes" | tee -a ~/.basilisk_ii_prefs
+keycodefile BasiliskII_keycodes
+swap_opt_cmd false" | tee -a ~/.basilisk_ii_prefs
 
 cd ~
 unzip chromebook-basilisk2-sdl2/HD200MB-POP.zip -d /root
